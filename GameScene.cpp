@@ -31,6 +31,11 @@ void GameScene::ExitScene()
 {
     Game::get().playerHealth = PLAYER_HEALTH;
     Game::get().score = 0;
+    Game::get().up = 0; Game::get().down = 0; Game::get().left = 0; Game::get().right = 0;
+    for(auto& enemy : enemies){
+        enemy.active = false;
+        //enemy.~Enemy();
+    }
     timer.stopTimer();
 }
 
