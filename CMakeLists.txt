@@ -16,24 +16,7 @@ include_directories(src/include/headers)
 link_directories(src/lib)
 
 # Source files
-set(SOURCES
-        main.cpp
-        Game.cpp
-        Helpers.cpp
-        Player.cpp
-        Bullet.cpp
-        Entity.cpp
-        Enemy.cpp
-        UI.cpp
-        Button.cpp
-        Text.cpp
-        Scene.cpp
-        SceneManager.cpp
-        GameScene.cpp
-        timercpp.cpp
-        GameOverScene.cpp
-        PauseMenu.cpp
-)
+file(GLOB SOURCES "src/cpp/*.cpp")
 
 # Executable target
 add_executable(main ${SOURCES})

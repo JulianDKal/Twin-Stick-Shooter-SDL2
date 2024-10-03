@@ -14,7 +14,7 @@ void GameScene::EnterScene()
     std::string msg = "Scene entered: " + name;
     SDL_Log(msg.c_str());
     event = new SDL_Event;
-
+    
     player = Player(WIDTH / 2, HEIGHT/2, 70, 70, "./../res/spaceship.png");
     SDL_Texture* backgound = loadTexture("./../res/background.jpg");
 
@@ -121,6 +121,9 @@ void GameScene::doInput(SDL_Event* event, Player& player){
                     timer.stopTimer();
                     Game::get().paused = true;
                     SceneManager::get().loadSceneAdditive(SceneManager::get().Pause);
+                }
+                if(event->key.keysym.sym == SDLK_SPACE){
+                    player.dodge();
                 }
                 break;
             case SDL_KEYUP:

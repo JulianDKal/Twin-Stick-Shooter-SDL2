@@ -6,6 +6,21 @@ void Player::move(int dx, int dy)
     yPos = (yPos + dy >= Game::get().height || yPos + dy <= 0 ? yPos : yPos + dy);
 }
 
+void Player::dodge()
+{
+    if(isDodging) return;
+    isDodging = true;
+    SDL_LogMessage(0, SDL_LOG_PRIORITY_INFO, "dodge started!");
+    //Timer timer;
+    //timer.setInterval([&]() { endDodge(); }, 1000);
+}
+
+void Player::endDodge()
+{
+    SDL_Log("Dodge is over");
+    isDodging = false;
+}
+
 int Player::getPosX()
 {
     return xPos;

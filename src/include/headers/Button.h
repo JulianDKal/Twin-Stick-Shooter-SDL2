@@ -11,7 +11,7 @@ private:
     SDL_Color color = {0,0,0,0};
     SDL_Color baseTextColor, textHightLightColor;
     SDL_Color textColor = {0,0,0,0};
-    SDL_Texture* texture;
+    SDL_Texture* texture = nullptr;
     SDL_Surface* surface;
     SDL_Rect Rect {0, 0, 0, 0};
     std::string text;
