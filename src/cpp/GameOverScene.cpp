@@ -19,6 +19,10 @@ void GameOverScene::EnterScene()
 
 void GameOverScene::UpdateScene()
 {
+    SDL_RenderClear(Game::get().getRenderer());
+    gameOverText.render();
+    restartButton.Render();
+    SDL_RenderPresent(Game::get().getRenderer());
         while (SDL_PollEvent(event))
         {
         restartButton.HandleEvent(*event);
@@ -38,11 +42,8 @@ void GameOverScene::UpdateScene()
                     break;
             }
         }
-        SDL_RenderClear(Game::get().getRenderer());
-        gameOverText.render();
-        restartButton.Render();
-        SDL_RenderPresent(Game::get().getRenderer());
-        SDL_Delay(16);
+
+    SDL_Delay(16);
 }
 
 GameOverScene::~GameOverScene()

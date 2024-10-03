@@ -9,10 +9,17 @@ void Player::move(int dx, int dy)
 void Player::dodge()
 {
     if(isDodging) return;
+    SDL_LogMessage(0, SDL_LOG_PRIORITY_INFO, "Dodge started!");
     isDodging = true;
-    SDL_LogMessage(0, SDL_LOG_PRIORITY_INFO, "dodge started!");
-    //Timer timer;
-    //timer.setInterval([&]() { endDodge(); }, 1000);
+    
+    std::thread t([=, this]() {
+        if(!isDodging) return;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        if(!isDodging) return;
+        endDodge();
+    });
+    t.detach();
+
 }
 
 void Player::endDodge()

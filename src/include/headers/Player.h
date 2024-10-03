@@ -8,6 +8,7 @@ using Entity::Entity;
 
 private:
     int speed = 5, dodgeSpeed = 12;
+    //std::atomic<bool> isDodging{false};
     bool isDodging = false;
     void endDodge();
     //Timer timer;

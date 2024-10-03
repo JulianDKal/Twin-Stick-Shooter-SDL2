@@ -28,9 +28,7 @@ void Button::setClickHandler(void (*newClickHandler)())
 void Button::Render()
 {
     SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, color.r, color.g, color.b, color.a));
-    if (texture) {
-        SDL_DestroyTexture(texture);
-    }
+    
     const char* fontFile = this->textFont.c_str();
     TTF_Font *font = TTF_OpenFont(fontFile, fontSize);
     if (!font) {
