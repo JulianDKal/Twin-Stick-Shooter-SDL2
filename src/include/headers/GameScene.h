@@ -38,7 +38,7 @@ public:
     virtual void ExitScene();
     void UpdateGame();
     void RenderGame();
-    void doInput(SDL_Event* event, Player& player);
+    void doInput(SDL_Event* event);
     void keyDown(SDL_KeyboardEvent *event);
     void keyUp(SDL_KeyboardEvent *event);
     void spawnEnemy();

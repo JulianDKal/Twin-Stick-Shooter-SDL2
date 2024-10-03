@@ -41,13 +41,15 @@ void GameScene::ExitScene()
 
 void GameScene::UpdateGame()
 {
-        doInput(event, player);
+        doInput(event);
         if(mouseDown && !(mouseCounter % 10)) bullets.emplace_back(player.getPosX(), player.getPosY());
 
-        if (Game::get().up) player.move(0, -4);
-        if (Game::get().down) player.move(0, 4);
-        if (Game::get().left) player.move(-4, 0);
-        if (Game::get().right) player.move(4, 0);
+        if(player.isDodging){
+
+        }
+        else {
+            player.move();
+        }
 
         scoreText.update("Score: " + std::to_string(Game::get().score));
         healthText.update("Health: " + std::to_string(Game::get().playerHealth));
@@ -103,7 +105,12 @@ void GameScene::RenderGame()
         }
 }
 
-void GameScene::doInput(SDL_Event* event, Player& player){
+void GameScene::doInput(SDL_Event* event){
+    const Uint8* keystate = SDL_GetKeyboardState(NULL);
+        if (keystate[SDL_SCANCODE_W]) player.direction.y = -1; // Move up
+        if (keystate[SDL_SCANCODE_S]) player.direction.y = 1;  // Move down
+        if (keystate[SDL_SCANCODE_A]) player.direction.x = -1; // Move left
+        if (keystate[SDL_SCANCODE_D]) player.direction.x = 1;  // Move right
 
     while (SDL_PollEvent(event))
     {
@@ -116,7 +123,7 @@ void GameScene::doInput(SDL_Event* event, Player& player){
                 exit(0);
                 break;
             case SDL_KEYDOWN:
-                keyDown(&event->key);
+                //keyDown(&event->key);
                 if(event->key.keysym.sym == SDLK_ESCAPE){
                     timer.stopTimer();
                     Game::get().paused = true;
@@ -125,9 +132,6 @@ void GameScene::doInput(SDL_Event* event, Player& player){
                 if(event->key.keysym.sym == SDLK_SPACE){
                     player.dodge();
                 }
-                break;
-            case SDL_KEYUP:
-                keyUp(&event->key);
                 break;
             default:
                 break;
@@ -151,56 +155,6 @@ void GameScene::doInput(SDL_Event* event, Player& player){
     else {
         charging = false;
         chargingCounter = 0;
-    }
-}
-
-void GameScene::keyDown(SDL_KeyboardEvent *event){
-    if (event->repeat == 0)
-    {
-        if (event->keysym.scancode == SDL_SCANCODE_UP)
-        {
-            Game::get().up = 1;
-        }
-
-        if (event->keysym.scancode == SDL_SCANCODE_DOWN)
-        {
-            Game::get().down = 1;
-        }
-
-        if (event->keysym.scancode == SDL_SCANCODE_LEFT)
-        {
-            Game::get().left = 1;
-        }
-
-        if (event->keysym.scancode == SDL_SCANCODE_RIGHT)
-        {
-            Game::get().right = 1;
-        }
-    }
-}
-
-void GameScene::keyUp(SDL_KeyboardEvent *event){
-    if (event->repeat == 0)
-    {
-        if (event->keysym.scancode == SDL_SCANCODE_UP)
-        {
-            Game::get().up = 0;
-        }
-
-        if (event->keysym.scancode == SDL_SCANCODE_DOWN)
-        {
-            Game::get().down = 0;
-        }
-
-        if (event->keysym.scancode == SDL_SCANCODE_LEFT)
-        {
-            Game::get().left = 0;
-        }
-
-        if (event->keysym.scancode == SDL_SCANCODE_RIGHT)
-        {
-            Game::get().right = 0;
-        }
     }
 }
 

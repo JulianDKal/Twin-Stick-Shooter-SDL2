@@ -1,9 +1,14 @@
 #include "Player.h"
 
-void Player::move(int dx, int dy)
+void Player::move()
 {
-    xPos = (xPos + dx >= Game::get().width || xPos + dx <= 0 ? xPos : xPos + dx);
-    yPos = (yPos + dy >= Game::get().height || yPos + dy <= 0 ? yPos : yPos + dy);
+    direction.normalize();
+    direction = direction * speed;
+
+    xPos = (xPos + direction.x >= Game::get().width || xPos + direction.x <= 0 ? xPos : xPos + direction.x);
+    yPos = (yPos + direction.y >= Game::get().height || yPos + direction.y <= 0 ? yPos : yPos + direction.y);
+    direction.x = 0;
+    direction.y = 0;
 }
 
 void Player::dodge()
@@ -11,7 +16,7 @@ void Player::dodge()
     if(isDodging) return;
     SDL_LogMessage(0, SDL_LOG_PRIORITY_INFO, "Dodge started!");
     isDodging = true;
-    
+
     std::thread t([=, this]() {
         if(!isDodging) return;
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
@@ -19,7 +24,6 @@ void Player::dodge()
         endDodge();
     });
     t.detach();
-
 }
 
 void Player::endDodge()
