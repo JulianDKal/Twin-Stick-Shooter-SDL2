@@ -40,11 +40,6 @@ Game::Game(){
         std::exit(1);
     }
 
-    left = 0;
-    up = 0;
-    down = 0;
-    right = 0;
-
     SDL_Log("Initialized everything!");
 }
 
@@ -67,27 +62,3 @@ SDL_Renderer *Game::getRenderer()
 {
     return gRenderer;
 }
-
-// bool Game::loadMedia()
-// {
-//     // gHelloWorld = SDL_LoadBMP( "./../res/hello_world.bmp" );
-//     // if(!gHelloWorld){
-//     //     std::cout << "Unable to load image! " << SDL_GetError() << std::endl;
-//     //     return false;
-//     // }
-
-//     // //Apply the image
-//     // SDL_BlitSurface( gHelloWorld, NULL, gScreenSurface, NULL );
-
-//     // //Update the surface
-//     // SDL_UpdateWindowSurface( gWindow ); 
-
-//     // return true;
-//     gTexture = IMG_LoadTexture(gRenderer, "./../res/awesomeface.png");
-//     if(!gTexture){
-//         std::cerr << "Failed to load texture: " << SDL_GetError() << std::endl;
-//         return false;
-//     }
-
-//     return true;
-// }

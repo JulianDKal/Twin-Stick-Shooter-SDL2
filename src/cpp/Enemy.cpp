@@ -40,12 +40,6 @@ Enemy::~Enemy()
 
 void Enemy::updatePosition(int playerPosX, int playerPosY)
 {
-    if(calculateDistance(xPos, yPos, playerPosX, playerPosY) <= 20){
-        active = false;
-        Game::get().playerHealth -= 2;
-        return;
-    }
-
     direction.x = playerPosX - xPos;
     direction.y = playerPosY - yPos;
 

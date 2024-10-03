@@ -31,10 +31,8 @@ void GameScene::ExitScene()
 {
     Game::get().playerHealth = PLAYER_HEALTH;
     Game::get().score = 0;
-    Game::get().up = 0; Game::get().down = 0; Game::get().left = 0; Game::get().right = 0;
     for(auto& enemy : enemies){
         enemy.active = false;
-        //enemy.~Enemy();
     }
     timer.stopTimer();
 }
@@ -43,13 +41,7 @@ void GameScene::UpdateGame()
 {
         doInput(event);
         if(mouseDown && !(mouseCounter % 10)) bullets.emplace_back(player.getPosX(), player.getPosY());
-
-        if(player.isDodging){
-
-        }
-        else {
-            player.move();
-        }
+        player.move();
 
         scoreText.update("Score: " + std::to_string(Game::get().score));
         healthText.update("Health: " + std::to_string(Game::get().playerHealth));
@@ -73,6 +65,13 @@ void GameScene::UpdateGame()
         }
         for(auto& enemy : enemies) {
             enemy.updatePosition(player.getPosX(), player.getPosY());
+            if(player.isDodging) continue; //player can't get hurt when dodging
+            else if(calculateDistance(enemy.getPosX(), enemy.getPosY(), player.getPosX(), player.getPosY()) <= 20)
+            {
+                enemy.active = false;
+                Game::get().playerHealth -= 2;
+                return;
+            }
         }
         if(Game::get().playerHealth <= 0) SceneManager::get().loadScene(SceneManager::get().GameOver);
 }

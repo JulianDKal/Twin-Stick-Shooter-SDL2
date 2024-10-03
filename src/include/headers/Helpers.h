@@ -7,8 +7,8 @@
 #define PI 3.14159265358979323846
 
 struct Vector{
-    float x;
-    float y;
+    float x = 0;
+    float y = 0;
     void normalize(){
         float length = sqrt(x + y);
         x = x/length;

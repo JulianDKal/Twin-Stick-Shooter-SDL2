@@ -22,7 +22,6 @@ public:
     int playerHealth = PLAYER_HEALTH;
     int score = 0;
     int width, height;
-    int up, down, left, right;
     bool paused = false;
     static Game& get(){
         static Game instance;

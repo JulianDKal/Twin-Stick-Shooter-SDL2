@@ -26,8 +26,8 @@ class Player : public Entity
 using Entity::Entity;
 
 private:
-    int speed = 5, dodgeSpeed = 12;
-    //std::atomic<bool> isDodging{false};
+    int speed = 5, dodgeSpeed = 16;
+    vector2_t dodgeDirection;
     void endDodge();
     //Timer timer;
 public:
