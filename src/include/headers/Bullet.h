@@ -5,7 +5,7 @@
 class Bullet : public Entity
 {
 private:
-    vector2 direction;
+    vector2_t direction;
     float speed = 18;
 public:
     bool active = true;

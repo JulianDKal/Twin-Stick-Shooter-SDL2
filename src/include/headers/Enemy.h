@@ -9,7 +9,7 @@ class Enemy : public Entity
 {
 private:
     int speed = 4;
-    vector2 direction;
+    vector2_t direction;
 public:
     bool active = true;
     Enemy(int width, int height, const char* textFile);

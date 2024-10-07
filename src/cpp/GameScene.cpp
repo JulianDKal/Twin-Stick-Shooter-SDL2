@@ -31,6 +31,7 @@ void GameScene::ExitScene()
 {
     Game::get().playerHealth = PLAYER_HEALTH;
     Game::get().score = 0;
+    charge = 0;
     for(auto& enemy : enemies){
         enemy.active = false;
     }
@@ -56,6 +57,7 @@ void GameScene::UpdateGame()
                     enemy.active = false;
                     bullet.active = false;
                     Game::get().score += 1;
+                    charge += 10;
                 }
             }
         }
@@ -74,6 +76,8 @@ void GameScene::UpdateGame()
             }
         }
         if(Game::get().playerHealth <= 0) SceneManager::get().loadScene(SceneManager::get().GameOver);
+        if(charge >= 100) charge = 100;
+        chargeRect.w = charge * 1.5f;
 }
 
 void GameScene::RenderGame()
@@ -84,11 +88,14 @@ void GameScene::RenderGame()
 
         //***********Text************** */
 
+        SDL_SetRenderDrawColor(Game::get().getRenderer(), 255, 50, 50, 255);
+
         scoreText.render();
         healthText.render();
         //******************************* */
 
         //**********Player and UI********* */
+        SDL_RenderFillRect(Game::get().getRenderer(), &chargeRect); //draw charge bar
         player.draw();
         //********************************* */
         for(auto& bullet : bullets) {
@@ -98,10 +105,13 @@ void GameScene::RenderGame()
             enemy.draw();
         }
 
+        SDL_SetRenderDrawColor(Game::get().getRenderer(), 0, 0, 0, 255); //reset background to black
+
         if(!Game::get().paused){
             SDL_RenderPresent(Game::get().getRenderer());
             SDL_Delay(16);
         }
+
 }
 
 void GameScene::doInput(SDL_Event* event){
@@ -148,12 +158,12 @@ void GameScene::doInput(SDL_Event* event){
     }
     if(mState & SDL_BUTTON(3)) { //right mouse button held down
         charging = true;
-        chargingCounter++;
-        SDL_Log("%d", chargingCounter);
+        charge--;
+        if(charge <= 0) charge = 0;
+        SDL_Log("%d", charge);
     }
     else {
         charging = false;
-        chargingCounter = 0;
     }
 }
 
