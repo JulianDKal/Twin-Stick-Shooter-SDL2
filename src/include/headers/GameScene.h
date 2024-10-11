@@ -15,6 +15,7 @@ class GameScene : public Scene
 private:
     const int WIDTH = 1000;
     const int HEIGHT = 580;
+    SDL_Rect render_viewport {0,0,WIDTH - 100, HEIGHT - 100};
     Timer timer;
     std::list<Bullet> bullets;
     std::list<Enemy> enemies;

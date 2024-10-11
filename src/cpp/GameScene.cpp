@@ -36,6 +36,7 @@ void GameScene::ExitScene()
         enemy.active = false;
     }
     timer.stopTimer();
+    SDL_RenderSetViewport(Game::get().getRenderer(), NULL);
 }
 
 void GameScene::UpdateGame()
@@ -84,17 +85,17 @@ void GameScene::RenderGame()
 {
         //Actual Drawing happens here
         SDL_RenderClear(Game::get().getRenderer());
+        SDL_RenderSetViewport(Game::get().getRenderer(), &render_viewport);
+        std::cout << render_viewport.x << " " << render_viewport.y << std::endl;
         SDL_RenderCopy(Game::get().getRenderer(), background, NULL, NULL);
 
         //***********Text************** */
-
-        SDL_SetRenderDrawColor(Game::get().getRenderer(), 255, 50, 50, 255);
-
         scoreText.render();
         healthText.render();
         //******************************* */
 
         //**********Player and UI********* */
+        SDL_SetRenderDrawColor(Game::get().getRenderer(), 255, 50, 50, 255);
         SDL_RenderFillRect(Game::get().getRenderer(), &chargeRect); //draw charge bar
         player.draw();
         //********************************* */
@@ -109,17 +110,29 @@ void GameScene::RenderGame()
 
         if(!Game::get().paused){
             SDL_RenderPresent(Game::get().getRenderer());
-            SDL_Delay(16);
+            SDL_Delay(16); //62 FPS
         }
 
 }
 
 void GameScene::doInput(SDL_Event* event){
     const Uint8* keystate = SDL_GetKeyboardState(NULL);
-        if (keystate[SDL_SCANCODE_W]) player.direction.y = -1; // Move up
-        if (keystate[SDL_SCANCODE_S]) player.direction.y = 1;  // Move down
-        if (keystate[SDL_SCANCODE_A]) player.direction.x = -1; // Move left
-        if (keystate[SDL_SCANCODE_D]) player.direction.x = 1;  // Move right
+        if (keystate[SDL_SCANCODE_W]) {
+            player.direction.y = -1;
+            render_viewport.y += 2;
+        } // Move up
+        if (keystate[SDL_SCANCODE_S]) {
+            player.direction.y = 1;
+            render_viewport.y -= 2;
+        }  // Move down
+        if (keystate[SDL_SCANCODE_A]) {
+            player.direction.x = -1;
+            render_viewport.x += 2;
+        } // Move left
+        if (keystate[SDL_SCANCODE_D]) {
+            player.direction.x = 1;
+            render_viewport.x -= 2;
+        }  // Move right
 
     while (SDL_PollEvent(event))
     {
