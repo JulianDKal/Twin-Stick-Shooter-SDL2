@@ -55,5 +55,7 @@ void Enemy::updatePosition(int playerPosX, int playerPosY)
 
 void Enemy::draw()
 {
-    drawEntityRotated(texture, width, height, angle, xPos, yPos);
+    //drawEntityRotated(texture, width, height, angle, xPos, yPos);
+    if(texture == NULL) printf("Enemy texture is NULL");
+    drawEntity(texture, xPos, yPos);
 }

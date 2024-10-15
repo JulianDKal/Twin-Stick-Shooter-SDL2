@@ -86,7 +86,7 @@ void GameScene::RenderGame()
         //Actual Drawing happens here
         SDL_RenderClear(Game::get().getRenderer());
         SDL_RenderSetViewport(Game::get().getRenderer(), &render_viewport);
-        std::cout << render_viewport.x << " " << render_viewport.y << std::endl;
+        //std::cout << render_viewport.x << " " << render_viewport.y << std::endl;
         SDL_RenderCopy(Game::get().getRenderer(), background, NULL, NULL);
 
         //***********Text************** */
@@ -182,5 +182,5 @@ void GameScene::doInput(SDL_Event* event){
 
 void GameScene::spawnEnemy()
 {
-    enemies.emplace_back(80, 80, "./../res/spaceship.png");
+    enemies.emplace_back(80, 80, "./../res/ghost_pixel.png");
 }
