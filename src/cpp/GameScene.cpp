@@ -15,10 +15,8 @@ void GameScene::EnterScene()
     SDL_Log(msg.c_str());
     event = new SDL_Event;
     
-    player = Player(WIDTH / 2, HEIGHT/2, 70, 70, "./../res/spaceship.png");
+    player = Player(Game::get().width / 2, Game::get().height/2, 70, 70, "./../res/spaceship.png");
     SDL_Texture* backgound = loadTexture("./../res/background.jpg");
-
-    timer.setInterval([&]() { spawnEnemy(); }, 2000);
 }
 
 void GameScene::UpdateScene()
@@ -35,12 +33,21 @@ void GameScene::ExitScene()
     for(auto& enemy : enemies){
         enemy.active = false;
     }
-    timer.stopTimer();
+    render_viewport.x = 0;
+    render_viewport.y = 0;
     SDL_RenderSetViewport(Game::get().getRenderer(), NULL);
 }
 
 void GameScene::UpdateGame()
 {
+        static Uint32 lastSpawnTime = 0;
+        Uint32 currentTime = SDL_GetTicks();
+
+        if(currentTime - lastSpawnTime >= 2000){
+            enemies.emplace_back(80, 80, "./../res/spaceship.png");
+            lastSpawnTime = currentTime;
+        }
+
         doInput(event);
         if(mouseDown && !(mouseCounter % 10)) bullets.emplace_back(player.getPosX(), player.getPosY());
         player.move();
@@ -90,12 +97,14 @@ void GameScene::RenderGame()
         SDL_RenderCopy(Game::get().getRenderer(), background, NULL, NULL);
 
         //***********Text************** */
-        scoreText.render();
-        healthText.render();
+        scoreText.renderRelative(render_viewport.x, render_viewport.y);
+        healthText.renderRelative(render_viewport.x, render_viewport.y);
         //******************************* */
 
         //**********Player and UI********* */
         SDL_SetRenderDrawColor(Game::get().getRenderer(), 255, 50, 50, 255);
+        chargeRect.x = chargeRectPosX - render_viewport.x;
+        chargeRect.y = chargeRectPosY - render_viewport.y;
         SDL_RenderFillRect(Game::get().getRenderer(), &chargeRect); //draw charge bar
         player.draw();
         //********************************* */
@@ -147,12 +156,12 @@ void GameScene::doInput(SDL_Event* event){
             case SDL_KEYDOWN:
                 //keyDown(&event->key);
                 if(event->key.keysym.sym == SDLK_ESCAPE){
-                    timer.stopTimer();
                     Game::get().paused = true;
                     SceneManager::get().loadSceneAdditive(SceneManager::get().Pause);
                 }
                 if(event->key.keysym.sym == SDLK_SPACE){
                     player.dodge();
+                    enemies.emplace_back(80, 80, "./../res/spaceship.png");
                 }
                 break;
             default:
@@ -178,9 +187,4 @@ void GameScene::doInput(SDL_Event* event){
     else {
         charging = false;
     }
-}
-
-void GameScene::spawnEnemy()
-{
-    enemies.emplace_back(80, 80, "./../res/ghost_pixel.png");
 }

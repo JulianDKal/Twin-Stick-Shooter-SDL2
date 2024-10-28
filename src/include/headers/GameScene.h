@@ -13,9 +13,7 @@ class GameScene : public Scene
 {
 //using Scene::Scene;
 private:
-    const int WIDTH = 1000;
-    const int HEIGHT = 580;
-    SDL_Rect render_viewport {0,0,WIDTH - 100, HEIGHT - 100};
+    SDL_Rect render_viewport {0,0,Game::get().width + 100, Game::get().height + 100};
     Timer timer;
     std::list<Bullet> bullets;
     std::list<Enemy> enemies;
@@ -30,7 +28,9 @@ private:
     Text scoreText = Text(10, 10, "Score: " + std::to_string(Game::get().score),40, white, "./../res/fonts/Vermin Vibes 1989.ttf");
     Text healthText = Text(scoreText.getWidth() + 25, 10, "Health: " + std::to_string(Game::get().playerHealth), 
         40, white, "./../res/fonts/Vermin Vibes 1989.ttf");
-    SDL_Rect chargeRect {scoreText.getWidth() + healthText.getWidth() + 50, 15, 10, 20};
+    int chargeRectPosX = scoreText.getWidth() + healthText.getWidth() + 50;
+    int chargeRectPosY = 15;
+    SDL_Rect chargeRect {chargeRectPosX, chargeRectPosY, 10, 20};
     SDL_Color red = {255, 0, 10, 255};
 public:
     GameScene(/* args */);
@@ -41,7 +41,6 @@ public:
     void UpdateGame();
     void RenderGame();
     void doInput(SDL_Event* event);
-    void spawnEnemy();
 };
 
 

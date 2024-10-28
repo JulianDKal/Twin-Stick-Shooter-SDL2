@@ -64,3 +64,4 @@ void Player::draw()
     angle = getAngle(xPos, yPos, mouseX, mouseY);
     drawEntityRotated(texture, width, height, angle, xPos, yPos);
 }
+

@@ -20,6 +20,7 @@ public:
     Text(int x, int y, std::string content, int fontSize, SDL_Color textColor, std::string pathToFont, bool centered = false);
     ~Text();
     void render();
+    void renderRelative(int x, int y);
     void update(std::string content); //creates new texture but does not render
     int getWidth();
     int getHeight();

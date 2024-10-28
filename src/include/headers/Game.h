@@ -7,7 +7,6 @@
 
 #ifndef PLAYER_HEALTH
 #define PLAYER_HEALTH 2
-
 #endif
 
 class Game

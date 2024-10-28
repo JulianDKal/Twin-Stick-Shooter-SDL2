@@ -48,6 +48,13 @@ void Text::render()
     SDL_RenderCopy(Game::get().getRenderer(), texture, NULL, &rect);
 }
 
+void Text::renderRelative(int x, int y)
+{
+    rect.x = xPos - x;
+    rect.y = yPos - y;
+    SDL_RenderCopy(Game::get().getRenderer(), texture, NULL, &rect);
+}
+
 void Text::update(std::string content)
 {
     this->content = content;
