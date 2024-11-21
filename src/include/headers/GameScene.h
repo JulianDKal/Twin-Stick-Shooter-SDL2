@@ -9,12 +9,6 @@
 #include "Enemy.h"
 #include "SceneManager.h"
 
-struct cameraStruct {
-    int xPos = 0, yPos = 0;
-    int speed = 4;
-    vector2_t direction;
-};
-
 class GameScene : public Scene
 {
 //using Scene::Scene;

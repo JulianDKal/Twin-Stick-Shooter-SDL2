@@ -57,11 +57,11 @@ int Player::getPosY()
     return yPos;
 }
 
-void Player::draw()
+void Player::draw(cameraStruct* cam)
 {
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
-    angle = getAngle(xPos, yPos, mouseX, mouseY);
-    drawEntityRotated(texture, width, height, angle, xPos, yPos);
+    angle = getAngle(xPos - cam->xPos, yPos - cam->yPos, mouseX, mouseY);
+    drawEntityRotated(texture, width, height, angle, xPos, yPos, cam);
 }
 

@@ -19,5 +19,5 @@ public:
     void dodge();
     int getPosX();
     int getPosY();
-    virtual void draw();
+    virtual void draw(cameraStruct* cam);
 };

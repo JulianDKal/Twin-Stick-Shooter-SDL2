@@ -15,7 +15,7 @@ public:
     Enemy(int width, int height, const char* textFile);
     ~Enemy();
     void updatePosition(int playerPosX, int playerPosY);
-    void draw();
+    void draw(cameraStruct* cam);
 };
 
 inline bool isDead(const Enemy& enemy)

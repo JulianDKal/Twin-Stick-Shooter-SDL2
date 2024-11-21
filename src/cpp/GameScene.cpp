@@ -35,6 +35,7 @@ void GameScene::ExitScene()
     for(auto& enemy : enemies){
         enemy.active = false;
     }
+    bullets.clear();
 }
 
 void GameScene::UpdateGame()
@@ -54,7 +55,7 @@ void GameScene::UpdateGame()
         }
 
         doInput(event);
-        if(mouseDown && !(mouseCounter % 10)) bullets.emplace_back(player.getPosX(), player.getPosY());
+        if(mouseDown && !(mouseCounter % 10)) bullets.emplace_back(player.getPosX(), player.getPosY(), &camera);
         player.move();
 
         scoreText.update("Score: " + std::to_string(Game::get().score));
@@ -94,14 +95,14 @@ void GameScene::UpdateGame()
 
         camera.xPos = player.getPosX() - Game::get().width / 2;
         camera.yPos = player.getPosY() - Game::get().height / 2;
-        // std::cout << player.getPosX() << " " << player.getPosY() << "\n";
+        //std::cout << camera.xPos << " " << camera.xPos << "\n";
 }
 
 void GameScene::RenderGame()
 {
         //Actual Drawing happens here
         SDL_RenderClear(Game::get().getRenderer());
-        drawEntity(background, 0 - camera.xPos, 0 - camera.yPos);
+        drawEntity(background, 0, 0, &camera);
         //SDL_RenderCopy(Game::get().getRenderer(), background, NULL, NULL);
 
         //***********Text************** */
@@ -112,13 +113,13 @@ void GameScene::RenderGame()
         //**********Player and UI********* */
         SDL_SetRenderDrawColor(Game::get().getRenderer(), 255, 50, 50, 255);
         SDL_RenderFillRect(Game::get().getRenderer(), &chargeRect); //draw charge bar
-        player.draw();
+        player.draw(&camera);
         //********************************* */
         for(auto& bullet : bullets) {
-            bullet.draw();
+            bullet.draw(&camera);
         }
         for(auto& enemy : enemies) {
-            enemy.draw();
+            enemy.draw(&camera);
         }
 
         SDL_SetRenderDrawColor(Game::get().getRenderer(), 0, 0, 0, 255); //reset background to black
@@ -163,7 +164,6 @@ void GameScene::doInput(SDL_Event* event){
                 }
                 if(event->key.keysym.sym == SDLK_SPACE){
                     player.dodge();
-                    enemies.emplace_back(80, 80, "./../res/spaceship.png");
                 }
                 break;
             default:

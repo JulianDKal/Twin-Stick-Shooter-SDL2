@@ -14,41 +14,58 @@ SDL_Texture *loadTexture(const char *filename)
     return texture;
 }
 
-void drawEntity(SDL_Texture *texture, int x, int y)
+void drawEntity(SDL_Texture *texture, int x, int y, cameraStruct* cam)
 {
+    SDL_assert(texture != nullptr);
+    int camPosX = 0, camPosY = 0;
+    if(cam != nullptr) {
+        camPosX = cam->xPos;
+        camPosY = cam->yPos;
+    }
     SDL_Rect dest;
 
-    dest.x = x;
-    dest.y = y;
     SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
+    dest.x = x - camPosX;
+    dest.y = y - camPosY;
 
     SDL_RenderCopy(Game::get().getRenderer(), texture, NULL, &dest);
 }
 
-void drawEntity(SDL_Texture *texture, int width, int height, int x, int y)
+void drawEntity(SDL_Texture *texture, int width, int height, int x, int y, cameraStruct* cam)
 {
+    SDL_assert(texture != nullptr);
+    int camPosX = 0, camPosY = 0;
+    if(cam != nullptr) {
+        camPosX = cam->xPos;
+        camPosY = cam->yPos;
+    }
     SDL_Rect dest;
 
     dest.h = width;
     dest.w = height;
 
-    dest.x = x - width / 2;
-    dest.y = y - height / 2;
+    dest.x = x - camPosX;
+    dest.y = y - camPosY;
     //SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
 
     SDL_RenderCopy(Game::get().getRenderer(), texture, NULL, &dest);
 }
 
-void drawEntityRotated(SDL_Texture *texture, int width, int height, float angle, int x, int y)
+void drawEntityRotated(SDL_Texture *texture, int width, int height, float angle, int x, int y, cameraStruct* cam)
 {
     SDL_assert(texture != nullptr);
 
+    int camPosX = 0, camPosY = 0;
+    if(cam != nullptr) {
+        camPosX = cam->xPos;
+        camPosY = cam->yPos;
+    }
     SDL_Rect dest;
 
     dest.h = width;
     dest.w = height;
-    dest.x = x - width / 2;
-    dest.y = y - height / 2;
+    dest.x = x - width / 2 - camPosX;
+    dest.y = y - height / 2 - camPosY;
 
     SDL_RenderCopyEx(Game::get().getRenderer(), texture, NULL, &dest, angle, NULL, SDL_FLIP_NONE);
 }
