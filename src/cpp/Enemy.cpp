@@ -28,7 +28,6 @@ Enemy::Enemy(int width, int height, const char *textFile)
     this->width = width;
     this->height = height;
     texture = loadTexture(textFile);
-
 }
 
 Enemy::~Enemy()
@@ -43,9 +42,7 @@ void Enemy::updatePosition(int playerPosX, int playerPosY)
     direction.x = playerPosX - xPos;
     direction.y = playerPosY - yPos;
 
-    float length = sqrt(pow(direction.x, 2) + pow(direction.y, 2));
-    direction.x = direction.x/length;
-    direction.y = direction.y/length;
+    direction.normalize();
 
     xPos += (speed * direction.x);
     yPos += (speed * direction.y);

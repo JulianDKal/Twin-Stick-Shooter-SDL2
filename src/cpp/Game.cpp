@@ -43,11 +43,6 @@ Game::Game(){
     SDL_Log("Initialized everything!");
 }
 
-void Game::Initialize(int width, int height)
-{
-
-}
-
 Game::~Game()
 {
     //Destroy window

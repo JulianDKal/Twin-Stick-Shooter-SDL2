@@ -16,6 +16,8 @@ void GameScene::EnterScene()
     event = new SDL_Event;
     
     player = Player(Game::get().width / 2, Game::get().height/2, 70, 70, "./../res/spaceship.png");
+    camera.xPos = player.getPosX();
+    camera.yPos = player.getPosY();
     SDL_Texture* backgound = loadTexture("./../res/background.jpg");
 }
 
@@ -33,15 +35,18 @@ void GameScene::ExitScene()
     for(auto& enemy : enemies){
         enemy.active = false;
     }
-    render_viewport.x = 0;
-    render_viewport.y = 0;
-    SDL_RenderSetViewport(Game::get().getRenderer(), NULL);
 }
 
 void GameScene::UpdateGame()
 {
         static Uint32 lastSpawnTime = 0;
         Uint32 currentTime = SDL_GetTicks();
+
+        // camera.direction.x = player.getPosX() - camera.xPos;
+        // camera.direction.y = player.getPosY() - camera.yPos;
+        // camera.direction.normalize();
+        // camera.xPos += (camera.speed * camera.direction.x);
+        // camera.yPos += (camera.speed * camera.direction.y);
 
         if(currentTime - lastSpawnTime >= 2000){
             enemies.emplace_back(80, 80, "./../res/spaceship.png");
@@ -86,25 +91,26 @@ void GameScene::UpdateGame()
         if(Game::get().playerHealth <= 0) SceneManager::get().loadScene(SceneManager::get().GameOver);
         if(charge >= 100) charge = 100;
         chargeRect.w = charge * 1.5f;
+
+        camera.xPos = player.getPosX() - Game::get().width / 2;
+        camera.yPos = player.getPosY() - Game::get().height / 2;
+        // std::cout << player.getPosX() << " " << player.getPosY() << "\n";
 }
 
 void GameScene::RenderGame()
 {
         //Actual Drawing happens here
         SDL_RenderClear(Game::get().getRenderer());
-        SDL_RenderSetViewport(Game::get().getRenderer(), &render_viewport);
-        //std::cout << render_viewport.x << " " << render_viewport.y << std::endl;
-        SDL_RenderCopy(Game::get().getRenderer(), background, NULL, NULL);
+        drawEntity(background, 0 - camera.xPos, 0 - camera.yPos);
+        //SDL_RenderCopy(Game::get().getRenderer(), background, NULL, NULL);
 
         //***********Text************** */
-        scoreText.renderRelative(render_viewport.x, render_viewport.y);
-        healthText.renderRelative(render_viewport.x, render_viewport.y);
+        scoreText.render();
+        healthText.render();
         //******************************* */
 
         //**********Player and UI********* */
         SDL_SetRenderDrawColor(Game::get().getRenderer(), 255, 50, 50, 255);
-        chargeRect.x = chargeRectPosX - render_viewport.x;
-        chargeRect.y = chargeRectPosY - render_viewport.y;
         SDL_RenderFillRect(Game::get().getRenderer(), &chargeRect); //draw charge bar
         player.draw();
         //********************************* */
@@ -128,19 +134,15 @@ void GameScene::doInput(SDL_Event* event){
     const Uint8* keystate = SDL_GetKeyboardState(NULL);
         if (keystate[SDL_SCANCODE_W]) {
             player.direction.y = -1;
-            render_viewport.y += 2;
         } // Move up
         if (keystate[SDL_SCANCODE_S]) {
             player.direction.y = 1;
-            render_viewport.y -= 2;
         }  // Move down
         if (keystate[SDL_SCANCODE_A]) {
             player.direction.x = -1;
-            render_viewport.x += 2;
         } // Move left
         if (keystate[SDL_SCANCODE_D]) {
             player.direction.x = 1;
-            render_viewport.x -= 2;
         }  // Move right
 
     while (SDL_PollEvent(event))

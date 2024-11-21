@@ -9,11 +9,16 @@
 #include "Enemy.h"
 #include "SceneManager.h"
 
+struct cameraStruct {
+    int xPos = 0, yPos = 0;
+    int speed = 4;
+    vector2_t direction;
+};
+
 class GameScene : public Scene
 {
 //using Scene::Scene;
 private:
-    SDL_Rect render_viewport {0,0,Game::get().width + 100, Game::get().height + 100};
     Timer timer;
     std::list<Bullet> bullets;
     std::list<Enemy> enemies;
@@ -21,6 +26,7 @@ private:
     SDL_Color white = {255, 255, 255, 255};
     SDL_Color transparent = {0,0,0,0};
     Player player;
+    cameraStruct camera;
     bool mouseDown, charging = false;
     int charge = 0;
     int mouseCounter = 0;

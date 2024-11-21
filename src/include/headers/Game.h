@@ -26,7 +26,6 @@ public:
         static Game instance;
         return instance;
     }
-    void Initialize(int width, int height);
     ~Game();
     SDL_Window* getWindow() const;
     SDL_Renderer* getRenderer();

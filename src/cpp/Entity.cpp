@@ -11,7 +11,9 @@ Entity::Entity(int x, int y, int width, int height, const char *textFile)
     this->yPos = y;
     this->width = width;
     this->height = height;
-    texture = loadTexture(textFile);
+    //textFile can be left empty if you want to create an empty object
+    if(textFile != "") texture = loadTexture(textFile);
+    else texture = nullptr;
 }
 
 void Entity::draw()
