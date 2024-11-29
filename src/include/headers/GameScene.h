@@ -9,6 +9,7 @@
 #include "Enemy.h"
 #include "Camera.h"
 #include "SceneManager.h"
+#include <list>
 
 class GameScene : public Scene
 {

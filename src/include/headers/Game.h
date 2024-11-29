@@ -3,7 +3,6 @@
 #include "SDL2/SDL_image.h"
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
-#include <list>
 
 #ifndef PLAYER_HEALTH
 #define PLAYER_HEALTH 2
@@ -16,8 +15,6 @@ private:
     SDL_Renderer* gRenderer = NULL;
     Game();
 public:
-    //Game* Game::instance = NULL;
-
     int playerHealth = PLAYER_HEALTH;
     int score = 0;
     int width, height;

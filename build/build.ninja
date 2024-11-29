@@ -52,126 +52,126 @@ build cmake_object_order_depends_target_main: phony || .
 build CMakeFiles/main.dir/src/cpp/Bullet.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Bullet.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Bullet.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/Button.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Button.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Button.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/Camera.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Camera.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Camera.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/Enemy.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Enemy.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Enemy.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/Entity.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Entity.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Entity.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/Game.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Game.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Game.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/GameOverScene.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/GameOverScene.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/GameOverScene.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/GameScene.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/GameScene.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/GameScene.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/Helpers.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Helpers.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Helpers.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/MainMenu.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/MainMenu.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/MainMenu.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/PauseMenu.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/PauseMenu.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/PauseMenu.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/Player.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Player.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Player.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/Scene.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Scene.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Scene.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/SceneManager.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/SceneManager.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/SceneManager.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/Text.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Text.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Text.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/UI.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/UI.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/UI.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/main.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/main.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/main.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
 build CMakeFiles/main.dir/src/cpp/timercpp.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/timercpp.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/timercpp.cpp.o.d
   FLAGS = -g -std=gnu++20
-  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -isystem /usr/include/SDL2
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 

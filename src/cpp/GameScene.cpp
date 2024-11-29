@@ -59,7 +59,7 @@ void GameScene::UpdateGame()
         for(auto& bullet : bullets) {
             for(auto& enemy : enemies) {
                 if(calculateDistance(bullet.getPosX(), bullet.getPosY(), enemy.getPosX(), enemy.getPosY()) <= 35){
-                    enemy.active = false;
+                    enemy.takeDamage(1);
                     bullet.active = false;
                     Game::get().score += 1;
                     charge += 10;

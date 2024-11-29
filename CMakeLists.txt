@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Include directories
 #include_directories(src/include)
 include_directories(src/include/headers)
+include_directories(src/include/headers/interfaces)
 
 # Link directories
 #link_directories(src/lib)
