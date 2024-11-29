@@ -20,7 +20,13 @@ void Button::HandleMouseClick(const SDL_MouseButtonEvent& e)
     }
 }
 
-void Button::setClickHandler(void (*newClickHandler)())
+void Button::reset()
+{
+    color = baseColor;
+    textColor = baseTextColor;
+}
+
+void Button::setClickHandler(ClickHandler newClickHandler)
 {
     clickHandler = newClickHandler;
 }

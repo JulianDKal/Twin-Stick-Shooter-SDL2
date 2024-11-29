@@ -17,4 +17,7 @@ public:
     virtual void EnterScene();
     virtual void UpdateScene();
     virtual void ExitScene();
+
+    void resumeHandler();
+    void exitHandler();
 };

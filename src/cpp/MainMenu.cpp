@@ -40,6 +40,7 @@ void MainMenu::UpdateScene()
 
 void MainMenu::ExitScene()
 {
+    startButton.reset();
 }
 
 MainMenu::~MainMenu()

@@ -1,11 +1,13 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include "Game.h"
-//#include "Text.h"
+#include <functional>
 #include <iostream>
 
 class Button
 {
+using ClickHandler = std::function<void()>;
+
 private:
     SDL_Color baseColor, highLightColor;
     SDL_Color color = {0,0,0,0};
@@ -20,7 +22,9 @@ private:
     //Text text;
     void HandleMouseMotion(const SDL_MouseMotionEvent& e);
     void HandleMouseClick(const SDL_MouseButtonEvent& e);
-    void (*clickHandler)() = nullptr;
+
+    ClickHandler clickHandler;
+    
 public:
     Button(int x, int y, int w, int h, SDL_Color base, SDL_Color highLight, SDL_Color bastTextColor, SDL_Color highLightText, const char* buttonText) 
         : Rect{x - w/2, y - h/2, w, h}, baseColor(base), highLightColor(highLight), baseTextColor(baseTextColor), textHightLightColor(highLightText), text(buttonText) {
@@ -28,7 +32,8 @@ public:
             baseTextColor = {255, 255, 255, 255};
             
         }
-    void setClickHandler(void (*newClickHandler)());
+    void reset(); //resets color values etc. so that the button doesn't stay changed after reentering the scene
+    void setClickHandler(ClickHandler newHandler);
     void Render();
     void HandleEvent(const SDL_Event& e);
     bool isWithinBounds(int x, int y);

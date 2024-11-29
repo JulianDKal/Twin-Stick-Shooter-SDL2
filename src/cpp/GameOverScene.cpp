@@ -47,5 +47,5 @@ GameOverScene::~GameOverScene()
 
 void GameOverScene::ExitScene()
 {
-
+    restartButton.reset();
 }
