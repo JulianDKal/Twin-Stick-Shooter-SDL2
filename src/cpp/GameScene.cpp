@@ -16,8 +16,7 @@ void GameScene::EnterScene()
     event = new SDL_Event;
     
     player = Player(Game::get().width / 2, Game::get().height/2, 70, 70, "./../res/spaceship.png");
-    camera.xPos = player.getPosX();
-    camera.yPos = player.getPosY();
+    Camera::get().setPos(player.getPosX(), player.getPosY());
     SDL_Texture* backgound = loadTexture("./../res/background.jpg");
 }
 
@@ -32,6 +31,7 @@ void GameScene::ExitScene()
     Game::get().playerHealth = PLAYER_HEALTH;
     Game::get().score = 0;
     charge = 0;
+    // TODO: Refactor this 
     for(auto& enemy : enemies){
         enemy.active = false;
     }
@@ -55,7 +55,7 @@ void GameScene::UpdateGame()
         }
 
         doInput(event);
-        if(mouseDown && !(mouseCounter % 10)) bullets.emplace_back(player.getPosX(), player.getPosY(), &camera);
+        if(mouseDown && !(mouseCounter % 10)) bullets.emplace_back(player.getPosX(), player.getPosY());
         player.move();
 
         scoreText.update("Score: " + std::to_string(Game::get().score));
@@ -93,8 +93,7 @@ void GameScene::UpdateGame()
         if(charge >= 100) charge = 100;
         chargeRect.w = charge * 1.5f;
 
-        camera.xPos = player.getPosX() - Game::get().width / 2;
-        camera.yPos = player.getPosY() - Game::get().height / 2;
+        Camera::get().setPos(player.getPosX() - Game::get().width / 2, player.getPosY() - Game::get().height / 2);
         //std::cout << camera.xPos << " " << camera.xPos << "\n";
 }
 
@@ -102,7 +101,7 @@ void GameScene::RenderGame()
 {
         //Actual Drawing happens here
         SDL_RenderClear(Game::get().getRenderer());
-        drawEntity(background, 0, 0, &camera);
+        drawEntity(background, 0, 0);
         //SDL_RenderCopy(Game::get().getRenderer(), background, NULL, NULL);
 
         //***********Text************** */
@@ -113,13 +112,13 @@ void GameScene::RenderGame()
         //**********Player and UI********* */
         SDL_SetRenderDrawColor(Game::get().getRenderer(), 255, 50, 50, 255);
         SDL_RenderFillRect(Game::get().getRenderer(), &chargeRect); //draw charge bar
-        player.draw(&camera);
+        player.draw();
         //********************************* */
         for(auto& bullet : bullets) {
-            bullet.draw(&camera);
+            bullet.draw();
         }
         for(auto& enemy : enemies) {
-            enemy.draw(&camera);
+            enemy.draw();
         }
 
         SDL_SetRenderDrawColor(Game::get().getRenderer(), 0, 0, 0, 255); //reset background to black

@@ -1,15 +1,15 @@
 #include "Bullet.h"
 
 //x and y are the current position of the player, where the bullet is spawned
-Bullet::Bullet(int x, int y, cameraStruct* cam)
+Bullet::Bullet(int x, int y)
 {
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
-    direction.x = mouseX - (x - cam->xPos);
-    direction.y = mouseY - (y - cam->yPos);
+    direction.x = mouseX - (x - Camera::get().xPos);
+    direction.y = mouseY - (y - Camera::get().yPos);
     direction.normalize();
 
-    angle = -90 + getAngle(x - cam->xPos, y - cam->yPos, mouseX, mouseY);
+    angle = -90 + getAngle(x - Camera::get().xPos, y - Camera::get().yPos, mouseX, mouseY);
 
     xPos = x;
     yPos = y;
@@ -26,9 +26,9 @@ Bullet::~Bullet()
     SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Bullet destroyed");
 }
 
-void Bullet::draw(cameraStruct* cam)
+void Bullet::draw()
 {
-    drawEntityRotated(texture, width, height, angle, xPos, yPos, cam);   
+    drawEntityRotated(texture, width, height, angle, xPos, yPos);   
 }
 
 void Bullet::updatePositon()

@@ -7,6 +7,7 @@
 #include "Button.h"
 #include "Bullet.h"
 #include "Enemy.h"
+#include "Camera.h"
 #include "SceneManager.h"
 
 class GameScene : public Scene
@@ -20,7 +21,6 @@ private:
     SDL_Color white = {255, 255, 255, 255};
     SDL_Color transparent = {0,0,0,0};
     Player player;
-    cameraStruct camera;
     bool mouseDown, charging = false;
     int charge = 0;
     int mouseCounter = 0;

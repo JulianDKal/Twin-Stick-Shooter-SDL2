@@ -11,9 +11,9 @@ public:
     bool active = true;
     SDL_Texture* texture;
     void updatePositon();
-    Bullet(int x, int y, cameraStruct* cam);
+    Bullet(int x, int y);
     ~Bullet();
-    virtual void draw(cameraStruct* cam);
+    virtual void draw();
 };
 
 inline bool isInactive(const Bullet& bullet)

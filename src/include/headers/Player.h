@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "timercpp.h"
 #include "Helpers.h"
+#include "Camera.h"
 
 class Player : public Entity
 {
@@ -19,5 +20,5 @@ public:
     void dodge();
     int getPosX();
     int getPosY();
-    virtual void draw(cameraStruct* cam);
+    virtual void draw();
 };

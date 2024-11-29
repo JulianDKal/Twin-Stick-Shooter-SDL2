@@ -30,6 +30,7 @@ void Player::dodge()
     SDL_SetTextureColorMod(texture, 100, 100, 255); //multiplies the texture with a blue-ish color
     SDL_SetTextureAlphaMod(texture, 200); //lowers alpha value of the texture
 
+    // TODO: replace this with the SDL Time functions
     std::thread t([=, this]() {
         if(!isDodging) return;
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
@@ -57,11 +58,11 @@ int Player::getPosY()
     return yPos;
 }
 
-void Player::draw(cameraStruct* cam)
+void Player::draw()
 {
     int mouseX, mouseY;
     SDL_GetMouseState(&mouseX, &mouseY);
-    angle = getAngle(xPos - cam->xPos, yPos - cam->yPos, mouseX, mouseY);
-    drawEntityRotated(texture, width, height, angle, xPos, yPos, cam);
+    angle = getAngle(xPos - Camera::get().xPos, yPos - Camera::get().yPos, mouseX, mouseY);
+    drawEntityRotated(texture, width, height, angle, xPos, yPos);
 }
 

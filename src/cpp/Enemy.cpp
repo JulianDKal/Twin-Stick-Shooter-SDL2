@@ -50,7 +50,7 @@ void Enemy::updatePosition(int playerPosX, int playerPosY)
     angle = getAngle(xPos, yPos, playerPosX, playerPosY);
 }
 
-void Enemy::draw(cameraStruct* cam)
+void Enemy::draw()
 {
-    drawEntityRotated(texture, width, height, angle, xPos, yPos, cam);
+    drawEntityRotated(texture, width, height, angle, xPos, yPos);
 }
