@@ -3,6 +3,7 @@
 #include "GameScene.h"
 #include "GameOverScene.h"
 #include "PauseMenu.h"
+#include "MainMenu.h"
 
 class SceneManager
 {
@@ -20,7 +21,7 @@ public:
     Scene* extraScene;
     enum SCENE_NAME {
         Pause = 0,
-        MainMenu = 1,
+        Menu = 1,
         Gameplay,
         GameOver
     };

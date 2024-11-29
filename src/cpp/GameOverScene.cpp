@@ -4,11 +4,6 @@ void buttonClick(){
     SceneManager::get().loadScene(SceneManager::get().Gameplay);
 }
 
-GameOverScene::GameOverScene()
-{
-    name = "Game Over";
-}
-
 void GameOverScene::EnterScene()
 {
     std::string msg = "Scene entered: " + name;

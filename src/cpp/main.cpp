@@ -13,8 +13,7 @@ int main(int argc, char* argv[])
     Game& game = Game::get();
     SceneManager& sceneManager = SceneManager::get();
 
-    //SceneManager::get().currentScene = new GameScene();
-    sceneManager.loadScene(SceneManager::get().Gameplay);
+    sceneManager.loadScene(SceneManager::get().Menu);
 
     while (true)
     {

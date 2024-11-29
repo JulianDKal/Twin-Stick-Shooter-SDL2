@@ -22,7 +22,7 @@ SceneManager::~SceneManager()
 SceneManager::SceneManager() : currentScene(nullptr), extraScene(nullptr) {
     SDL_Log("SceneManager constructor called!");
     scenes[Pause] = new PauseMenu();
-    scenes[MainMenu] = nullptr; 
+    scenes[Menu] = new MainMenu();
     scenes[Gameplay] = new GameScene(); 
     scenes[GameOver] = new GameOverScene(); 
 }

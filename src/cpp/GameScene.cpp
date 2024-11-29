@@ -32,9 +32,7 @@ void GameScene::ExitScene()
     Game::get().score = 0;
     charge = 0;
     // TODO: Refactor this 
-    for(auto& enemy : enemies){
-        enemy.active = false;
-    }
+    enemies.clear();
     bullets.clear();
 }
 
@@ -42,12 +40,6 @@ void GameScene::UpdateGame()
 {
         static Uint32 lastSpawnTime = 0;
         Uint32 currentTime = SDL_GetTicks();
-
-        // camera.direction.x = player.getPosX() - camera.xPos;
-        // camera.direction.y = player.getPosY() - camera.yPos;
-        // camera.direction.normalize();
-        // camera.xPos += (camera.speed * camera.direction.x);
-        // camera.yPos += (camera.speed * camera.direction.y);
 
         if(currentTime - lastSpawnTime >= 2000){
             enemies.emplace_back(80, 80, "./../res/spaceship.png");
@@ -93,7 +85,6 @@ void GameScene::UpdateGame()
         chargeRect.w = charge * 1.5f;
 
         Camera::get().setPos(player.getPosX() - Game::get().width / 2, player.getPosY() - Game::get().height / 2);
-        //std::cout << camera.xPos << " " << camera.xPos << "\n";
 }
 
 void GameScene::RenderGame()
@@ -101,7 +92,6 @@ void GameScene::RenderGame()
         //Actual Drawing happens here
         SDL_RenderClear(Game::get().getRenderer());
         drawEntity(background, 0, 0);
-        //SDL_RenderCopy(Game::get().getRenderer(), background, NULL, NULL);
 
         //***********Text************** */
         scoreText.render();
@@ -157,7 +147,6 @@ void GameScene::doInput(SDL_Event* event){
                 exit(0);
                 break;
             case SDL_KEYDOWN:
-                //keyDown(&event->key);
                 if(event->key.keysym.sym == SDLK_ESCAPE){
                     Game::get().paused = true;
                     SceneManager::get().loadSceneAdditive(SceneManager::get().Pause);
@@ -183,7 +172,6 @@ void GameScene::doInput(SDL_Event* event){
         charging = true;
         charge--;
         if(charge <= 0) charge = 0;
-        //SDL_Log("%d", charge);
     }
     else {
         charging = false;
