@@ -21,9 +21,9 @@ private:
     SDL_Color white = {255, 255, 255, 255};
     SDL_Color transparent = {0,0,0,0};
     Player player;
-    bool mouseDown, charging = false;
+    bool charging = false;
+    Uint32 lastShotTime = 0;
     int charge = 0;
-    int mouseCounter = 0;
     SDL_Texture* background = loadTexture("./../res/background.jpg");
     Text scoreText = Text(10, 10, "Score: " + std::to_string(Game::get().score),40, white, "./../res/fonts/Vermin Vibes 1989.ttf");
     Text healthText = Text(scoreText.getWidth() + 25, 10, "Health: " + std::to_string(Game::get().playerHealth), 

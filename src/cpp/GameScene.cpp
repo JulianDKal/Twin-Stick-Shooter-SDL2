@@ -55,7 +55,6 @@ void GameScene::UpdateGame()
         }
 
         doInput(event);
-        if(mouseDown && !(mouseCounter % 10)) bullets.emplace_back(player.getPosX(), player.getPosY());
         player.move();
 
         scoreText.update("Score: " + std::to_string(Game::get().score));
@@ -131,6 +130,8 @@ void GameScene::RenderGame()
 }
 
 void GameScene::doInput(SDL_Event* event){
+    Uint32 currentTime = SDL_GetTicks();
+
     const Uint8* keystate = SDL_GetKeyboardState(NULL);
         if (keystate[SDL_SCANCODE_W]) {
             player.direction.y = -1;
@@ -171,19 +172,18 @@ void GameScene::doInput(SDL_Event* event){
     }
     Uint32 mState = SDL_GetMouseState(NULL, NULL);
     if(mState & SDL_BUTTON(1) ){ //left mouse button held down
-        mouseDown = true;
-        mouseCounter++;
+        //shoot if time elapsed since last shot is big enough
+        if(currentTime - lastShotTime >= 220){
+            bullets.emplace_back(player.getPosX(), player.getPosY());
+            lastShotTime = SDL_GetTicks();
+        }
         return; //can't do charge shot while normal shooting
-    }
-    else {
-        mouseDown = false;
-        mouseCounter = -1;
     }
     if(mState & SDL_BUTTON(3)) { //right mouse button held down
         charging = true;
         charge--;
         if(charge <= 0) charge = 0;
-        SDL_Log("%d", charge);
+        //SDL_Log("%d", charge);
     }
     else {
         charging = false;
