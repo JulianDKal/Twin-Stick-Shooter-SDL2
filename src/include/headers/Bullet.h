@@ -11,6 +11,7 @@ public:
     bool active = true;
     SDL_Texture* texture;
     void updatePositon();
+    bool isOffScreen();
     Bullet(int x, int y);
     ~Bullet();
     virtual void draw();

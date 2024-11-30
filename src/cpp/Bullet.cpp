@@ -38,3 +38,10 @@ void Bullet::updatePositon()
     if(this->isOffScreen()) active = false; 
 }
 
+bool Bullet::isOffScreen()
+{
+    int width = Game::get().width;
+    int height = Game::get().height;
+    return xPos >= width || xPos <= 0 || yPos >= height || yPos <= 0;
+}
+

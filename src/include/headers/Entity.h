@@ -12,7 +12,6 @@ public:
     Entity();
     Entity(int x, int y, int width, int height, const char* texFile);
     virtual void draw();
-    bool isOffScreen();
     int getPosX();
     int getPosY();
 };

@@ -42,7 +42,7 @@ void GameScene::UpdateGame()
         Uint32 currentTime = SDL_GetTicks();
 
         if(currentTime - lastSpawnTime >= 2000){
-            enemies.emplace_back(80, 80, "./../res/spaceship.png");
+            enemies.emplace_back(std::make_unique<Ghost>(80, 80, "./../res/spaceship.png"));
             lastSpawnTime = currentTime;
         }
 
@@ -53,13 +53,15 @@ void GameScene::UpdateGame()
         healthText.update("Health: " + std::to_string(Game::get().playerHealth));
 
         bullets.remove_if(isInactive);
-        enemies.remove_if(isDead);
+        enemies.remove_if([](const std::unique_ptr<Enemy>& enemy) {
+        return !enemy->active; // Access active member via unique_ptr
+    });
 
         //Check for bullet and enemy collision
         for(auto& bullet : bullets) {
             for(auto& enemy : enemies) {
-                if(calculateDistance(bullet.getPosX(), bullet.getPosY(), enemy.getPosX(), enemy.getPosY()) <= 35){
-                    enemy.takeDamage(1);
+                if(calculateDistance(bullet.getPosX(), bullet.getPosY(), enemy->getPosX(), enemy->getPosY()) <= 35){
+                    enemy->takeDamage(1);
                     bullet.active = false;
                     Game::get().score += 1;
                     charge += 10;
@@ -71,11 +73,11 @@ void GameScene::UpdateGame()
             bullet.updatePositon();
         }
         for(auto& enemy : enemies) {
-            enemy.updatePosition(player.getPosX(), player.getPosY());
+            enemy->updatePosition(player.getPosX(), player.getPosY());
             if(player.isDodging) continue; //player can't get hurt when dodging
-            else if(calculateDistance(enemy.getPosX(), enemy.getPosY(), player.getPosX(), player.getPosY()) <= 20)
+            else if(calculateDistance(enemy->getPosX(), enemy->getPosY(), player.getPosX(), player.getPosY()) <= 20)
             {
-                enemy.active = false;
+                enemy->active = false;
                 Game::get().playerHealth -= 2;
                 return;
             }
@@ -107,7 +109,7 @@ void GameScene::RenderGame()
             bullet.draw();
         }
         for(auto& enemy : enemies) {
-            enemy.draw();
+            enemy->draw();
         }
 
         SDL_SetRenderDrawColor(Game::get().getRenderer(), 0, 0, 0, 255); //reset background to black

@@ -6,10 +6,10 @@
 #include "Text.h"
 #include "Button.h"
 #include "Bullet.h"
-#include "Enemy.h"
 #include "Camera.h"
 #include "SceneManager.h"
 #include <list>
+#include "EnemyTypes.h"
 
 class GameScene : public Scene
 {
@@ -17,7 +17,7 @@ class GameScene : public Scene
 private:
     Timer timer;
     std::list<Bullet> bullets;
-    std::list<Enemy> enemies;
+    std::list<std::unique_ptr<Enemy>> enemies;
     SDL_Event* event;
     SDL_Color white = {255, 255, 255, 255};
     SDL_Color transparent = {0,0,0,0};
