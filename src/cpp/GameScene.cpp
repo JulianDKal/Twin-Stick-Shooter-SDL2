@@ -18,6 +18,9 @@ void GameScene::EnterScene()
     player = Player(Game::get().width / 2, Game::get().height/2, 70, 70, "./../res/spaceship.png");
     Camera::get().setPos(player.getPosX(), player.getPosY());
     background = loadTexture("./../res/game_background.jpg");
+    
+    lastSpawnTimeGhost = SDL_GetTicks();
+    bigGhostTime = SDL_GetTicks();
 }
 
 void GameScene::UpdateScene()
@@ -37,10 +40,10 @@ void GameScene::ExitScene()
 
 void GameScene::UpdateGame()
 {
-        static Uint32 lastSpawnTimeGhost = 0, bigGhostTime = 0;
         Uint32 currentTime = SDL_GetTicks();
         //spawns small ghosts
         if(currentTime - lastSpawnTimeGhost >= 2000){
+            //TODO: make the width and height an inherent property of the class that does not get set in the scene
             enemies.emplace_back(std::make_unique<Ghost>(120, 120, "./../res/pixel_ghost_1.png"));
             lastSpawnTimeGhost = currentTime;
         }

@@ -36,7 +36,7 @@ void Button::Render()
     SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, color.r, color.g, color.b, color.a));
     
     const char* fontFile = this->textFont.c_str();
-    TTF_Font *font = TTF_OpenFont(fontFile, fontSize);
+    TTF_Font *font = TTF_OpenFont(fontFile, _fontSize);
     if (!font) {
         std::cerr << "Button failed to load font: " << TTF_GetError() << std::endl;
         return;

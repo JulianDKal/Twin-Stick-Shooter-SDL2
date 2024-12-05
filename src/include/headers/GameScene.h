@@ -22,8 +22,10 @@ private:
     SDL_Color transparent = {0,0,0,0};
     Player player;
     bool charging = false;
-    Uint32 lastShotTime = 0;
     int charge = 0;
+    Uint32 lastShotTime = 0;
+    Uint32 lastSpawnTimeGhost = 0, bigGhostTime = 0;
+    Uint32 ghostSpawnTimeSave, bigGhostTimeSave;
     SDL_Texture* background;
     Text scoreText = Text(10, 10, "Score: " + std::to_string(Game::get().score),40, white, "./../res/fonts/Vermin Vibes 1989.ttf");
     Text healthText = Text(scoreText.getWidth() + 25, 10, "Health: " + std::to_string(Game::get().playerHealth), 
