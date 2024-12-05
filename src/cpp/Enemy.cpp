@@ -25,6 +25,8 @@ Enemy::Enemy(int width, int height, const char *textFile)
     default:
         break;
     }
+    xPos -= Camera::get().xPos;
+    yPos -= Camera::get().yPos;
     this->width = width;
     this->height = height;
     texture = loadTexture(textFile);
@@ -50,7 +52,10 @@ void Enemy::updatePosition(int playerPosX, int playerPosY)
     angle = getAngle(xPos, yPos, playerPosX, playerPosY);
 }
 
-void Enemy::draw()
+void Enemy::draw(int playerX, int playerY)
 {
-    drawEntityRotated(texture, width, height, angle, xPos, yPos);
+    flipState = (playerX < xPos) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
+    
+    drawEntityFl(texture, width, height, xPos, yPos, flipState);
+    //drawEntityRotated(texture, width, height, angle, xPos, yPos);
 }

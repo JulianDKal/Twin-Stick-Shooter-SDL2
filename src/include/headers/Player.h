@@ -1,6 +1,5 @@
 #pragma once
 #include "Entity.h"
-#include "timercpp.h"
 #include "Helpers.h"
 #include "Camera.h"
 

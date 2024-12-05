@@ -4,8 +4,8 @@
 
 Game::Game(){
     SDL_Log("Game constructor called!");
-    this->width = 1000;
-    this->height = 580;
+    this->width = 1500;
+    this->height = 1100;
 
     //Initialize SDL
     if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_TIMER ) < 0 )

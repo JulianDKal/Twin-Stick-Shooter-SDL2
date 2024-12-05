@@ -30,6 +30,7 @@ SDL_Texture* loadTexture(const char* filename );
 void drawEntity(SDL_Texture* texture, int x, int y);
 void drawEntity(SDL_Texture *texture, int width, int height, int x, int y);
 void drawEntityRotated(SDL_Texture *texture, int width, int height, float angle, int x, int y);
+void drawEntityFl(SDL_Texture* texture, int width, int height, int x, int y, SDL_RendererFlip flipState);
 float getAngle(int x1, int y1, int x2, int y2);
 float calculateDistance(int x1, int y1, int x2, int y2);
 SDL_Texture* renderText(const std::string &message, const std::string &fontFile, SDL_Color color, int fontSize, SDL_Renderer *renderer);

@@ -1,7 +1,6 @@
 #pragma once
 #include "Scene.h"
 #include "SDL2/SDL.h"
-#include "timercpp.h"
 #include "Player.h"
 #include "Text.h"
 #include "Button.h"
@@ -10,12 +9,12 @@
 #include "SceneManager.h"
 #include <list>
 #include "EnemyTypes.h"
+#include <memory>
 
 class GameScene : public Scene
 {
 //using Scene::Scene;
 private:
-    Timer timer;
     std::list<Bullet> bullets;
     std::list<std::unique_ptr<Enemy>> enemies;
     SDL_Event* event;
@@ -25,7 +24,7 @@ private:
     bool charging = false;
     Uint32 lastShotTime = 0;
     int charge = 0;
-    SDL_Texture* background = loadTexture("./../res/background.jpg");
+    SDL_Texture* background;
     Text scoreText = Text(10, 10, "Score: " + std::to_string(Game::get().score),40, white, "./../res/fonts/Vermin Vibes 1989.ttf");
     Text healthText = Text(scoreText.getWidth() + 25, 10, "Health: " + std::to_string(Game::get().playerHealth), 
         40, white, "./../res/fonts/Vermin Vibes 1989.ttf");

@@ -16,8 +16,11 @@ void Player::move()
         direction.normalize();
         direction = direction * speed;
 
-        xPos = (xPos + direction.x >= Game::get().width || xPos + direction.x <= 0 ? xPos : xPos + direction.x);
-        yPos = (yPos + direction.y >= Game::get().height || yPos + direction.y <= 0 ? yPos : yPos + direction.y);
+        //xPos = (xPos + direction.x >= Game::get().width || xPos + direction.x <= 0 ? xPos : xPos + direction.x);
+        //yPos = (yPos + direction.y >= Game::get().height || yPos + direction.y <= 0 ? yPos : yPos + direction.y);
+        xPos += direction.x;
+        yPos += direction.y;
+    
     }
     else {
         xPos = (xPos + dodgeDirection.x >= Game::get().width || xPos + dodgeDirection.x <= 0 ? xPos : xPos + dodgeDirection.x);

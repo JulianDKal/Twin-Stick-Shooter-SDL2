@@ -17,7 +17,7 @@ void GameScene::EnterScene()
     
     player = Player(Game::get().width / 2, Game::get().height/2, 70, 70, "./../res/spaceship.png");
     Camera::get().setPos(player.getPosX(), player.getPosY());
-    SDL_Texture* backgound = loadTexture("./../res/background.jpg");
+    background = loadTexture("./../res/game_background.jpg");
 }
 
 void GameScene::UpdateScene()
@@ -31,7 +31,6 @@ void GameScene::ExitScene()
     Game::get().playerHealth = PLAYER_HEALTH;
     Game::get().score = 0;
     charge = 0;
-    // TODO: Refactor this 
     enemies.clear();
     bullets.clear();
 }
@@ -42,12 +41,12 @@ void GameScene::UpdateGame()
         Uint32 currentTime = SDL_GetTicks();
         //spawns small ghosts
         if(currentTime - lastSpawnTimeGhost >= 2000){
-            enemies.emplace_back(std::make_unique<Ghost>(80, 80, "./../res/spaceship.png"));
+            enemies.emplace_back(std::make_unique<Ghost>(120, 120, "./../res/pixel_ghost_1.png"));
             lastSpawnTimeGhost = currentTime;
         }
         //spawns big ghosts
         if(currentTime - bigGhostTime >= 5000){
-            enemies.emplace_back(std::make_unique<BigGhost>(100, 100, "./../res/spaceship.png"));
+            enemies.emplace_back(std::make_unique<BigGhost>(150, 150, "./../res/pixel_ghost_1.png"));
             bigGhostTime = currentTime;
         }
 
@@ -97,7 +96,8 @@ void GameScene::RenderGame()
 {
         //Actual Drawing happens here
         SDL_RenderClear(Game::get().getRenderer());
-        drawEntity(background, 0, 0);
+        //offset x and y by 1000 so it accounts for the offset added by drawEntity
+        drawEntity(background, 2000, 2000, 700, 400); 
 
         //***********Text************** */
         scoreText.render();
@@ -113,7 +113,7 @@ void GameScene::RenderGame()
             bullet.draw();
         }
         for(auto& enemy : enemies) {
-            enemy->draw();
+            enemy->draw(player.getPosX(), player.getPosY());
         }
 
         SDL_SetRenderDrawColor(Game::get().getRenderer(), 0, 0, 0, 255); //reset background to black

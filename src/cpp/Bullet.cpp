@@ -13,8 +13,8 @@ Bullet::Bullet(int x, int y)
 
     xPos = x;
     yPos = y;
-    width = 40;
-    height = 40;
+    width = 60;
+    height = 60;
 
     texture = loadTexture("./../res/bullet.png");
 }

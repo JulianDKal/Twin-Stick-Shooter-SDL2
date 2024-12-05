@@ -20,8 +20,8 @@ void drawEntity(SDL_Texture *texture, int x, int y)
     SDL_Rect dest;
 
     SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
-    dest.x = x - Camera::get().xPos;
-    dest.y = y - Camera::get().yPos;
+    dest.x = x - dest.w/2 - Camera::get().xPos;
+    dest.y = y - dest.h/2 - Camera::get().yPos;
 
     SDL_RenderCopy(Game::get().getRenderer(), texture, NULL, &dest);
 }
@@ -34,8 +34,8 @@ void drawEntity(SDL_Texture *texture, int width, int height, int x, int y)
     dest.h = width;
     dest.w = height;
 
-    dest.x = x - Camera::get().xPos;
-    dest.y = y - Camera::get().yPos;
+    dest.x = x - width/2 - Camera::get().xPos;
+    dest.y = y - height/2 - Camera::get().yPos;
     //SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
 
     SDL_RenderCopy(Game::get().getRenderer(), texture, NULL, &dest);
@@ -48,10 +48,23 @@ void drawEntityRotated(SDL_Texture *texture, int width, int height, float angle,
 
     dest.h = width;
     dest.w = height;
-    dest.x = x - width / 2 - Camera::get().xPos;
-    dest.y = y - height / 2 - Camera::get().yPos;
+    dest.x = x - width/2 - Camera::get().xPos;
+    dest.y = y - height/2 - Camera::get().yPos;
 
     SDL_RenderCopyEx(Game::get().getRenderer(), texture, NULL, &dest, angle, NULL, SDL_FLIP_NONE);
+}
+
+void drawEntityFl(SDL_Texture *texture, int width, int height, int x, int y, SDL_RendererFlip flipState)
+{
+    SDL_assert(texture != nullptr);
+    SDL_Rect dest;
+
+    dest.h = width;
+    dest.w = height;
+    dest.x = x - width/2 - Camera::get().xPos;
+    dest.y = y - height/2 - Camera::get().yPos;
+
+    SDL_RenderCopyEx(Game::get().getRenderer(), texture, NULL, &dest, 0, NULL, flipState);
 }
 
 //get angle between two points in degrees
