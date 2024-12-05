@@ -1,5 +1,15 @@
 #include "Player.h"
 
+Uint32 dodgeCallback(Uint32 interval, void* param){
+    Player* player = static_cast<Player*>(param);
+    SDL_Log("Dodge is over");
+    player->isDodging = false;
+    SDL_SetTextureColorMod(player->texture, 255, 255, 255);
+    SDL_SetTextureAlphaMod(player->texture, 255);
+
+    return 0;
+}
+
 void Player::move()
 {
     if(!isDodging){
@@ -21,23 +31,15 @@ void Player::move()
 void Player::dodge()
 {
     if(isDodging) return;
+    SDL_TimerID timer = SDL_AddTimer(200, dodgeCallback, this);
     SDL_LogMessage(0, SDL_LOG_PRIORITY_INFO, "Dodge started!");
-    //This is horrible
+    
     dodgeDirection = direction;
     dodgeDirection.normalize();
     dodgeDirection = dodgeDirection * dodgeSpeed;
     isDodging = true;
     SDL_SetTextureColorMod(texture, 100, 100, 255); //multiplies the texture with a blue-ish color
     SDL_SetTextureAlphaMod(texture, 200); //lowers alpha value of the texture
-
-    // TODO: replace this with the SDL Time functions
-    std::thread t([=, this]() {
-        if(!isDodging) return;
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
-        if(!isDodging) return;
-        endDodge();
-    });
-    t.detach();
 }
 
 void Player::endDodge()

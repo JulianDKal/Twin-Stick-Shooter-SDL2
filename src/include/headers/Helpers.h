@@ -16,7 +16,8 @@ struct Vector2{
         x = x / length;
         y = y / length;
     }
-        Vector2 operator*(float scalar) const{
+    Vector2 operator*(float scalar) const
+    {
         return Vector2(x * scalar, y * scalar);
     }
     Vector2(float xVal, float yVal) : x(xVal), y(yVal) {}

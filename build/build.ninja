@@ -77,6 +77,13 @@ build CMakeFiles/main.dir/src/cpp/Enemy.cpp.o: CXX_COMPILER__main_unscanned_Debu
   OBJECT_DIR = CMakeFiles/main.dir
   OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
 
+build CMakeFiles/main.dir/src/cpp/EnemyTypes.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/EnemyTypes.cpp || cmake_object_order_depends_target_main
+  DEP_FILE = CMakeFiles/main.dir/src/cpp/EnemyTypes.cpp.o.d
+  FLAGS = -g -std=gnu++20
+  INCLUDES = -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers -I/home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/include/headers/interfaces -isystem /usr/include/SDL2
+  OBJECT_DIR = CMakeFiles/main.dir
+  OBJECT_FILE_DIR = CMakeFiles/main.dir/src/cpp
+
 build CMakeFiles/main.dir/src/cpp/Entity.cpp.o: CXX_COMPILER__main_unscanned_Debug /home/julian/Documents/GitHub/Twin-Stick-Shooter-SDL2/src/cpp/Entity.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles/main.dir/src/cpp/Entity.cpp.o.d
   FLAGS = -g -std=gnu++20
@@ -183,7 +190,7 @@ build CMakeFiles/main.dir/src/cpp/timercpp.cpp.o: CXX_COMPILER__main_unscanned_D
 #############################################
 # Link the executable main
 
-build main: CXX_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/src/cpp/Bullet.cpp.o CMakeFiles/main.dir/src/cpp/Button.cpp.o CMakeFiles/main.dir/src/cpp/Camera.cpp.o CMakeFiles/main.dir/src/cpp/Enemy.cpp.o CMakeFiles/main.dir/src/cpp/Entity.cpp.o CMakeFiles/main.dir/src/cpp/Game.cpp.o CMakeFiles/main.dir/src/cpp/GameOverScene.cpp.o CMakeFiles/main.dir/src/cpp/GameScene.cpp.o CMakeFiles/main.dir/src/cpp/Helpers.cpp.o CMakeFiles/main.dir/src/cpp/MainMenu.cpp.o CMakeFiles/main.dir/src/cpp/PauseMenu.cpp.o CMakeFiles/main.dir/src/cpp/Player.cpp.o CMakeFiles/main.dir/src/cpp/Scene.cpp.o CMakeFiles/main.dir/src/cpp/SceneManager.cpp.o CMakeFiles/main.dir/src/cpp/Text.cpp.o CMakeFiles/main.dir/src/cpp/UI.cpp.o CMakeFiles/main.dir/src/cpp/main.cpp.o CMakeFiles/main.dir/src/cpp/timercpp.cpp.o | /usr/lib64/libSDL2main.a /usr/lib64/libSDL2-2.0.so.0.3000.3 /usr/lib64/libSDL2_image.so /usr/lib64/libSDL2_ttf.so
+build main: CXX_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/src/cpp/Bullet.cpp.o CMakeFiles/main.dir/src/cpp/Button.cpp.o CMakeFiles/main.dir/src/cpp/Camera.cpp.o CMakeFiles/main.dir/src/cpp/Enemy.cpp.o CMakeFiles/main.dir/src/cpp/EnemyTypes.cpp.o CMakeFiles/main.dir/src/cpp/Entity.cpp.o CMakeFiles/main.dir/src/cpp/Game.cpp.o CMakeFiles/main.dir/src/cpp/GameOverScene.cpp.o CMakeFiles/main.dir/src/cpp/GameScene.cpp.o CMakeFiles/main.dir/src/cpp/Helpers.cpp.o CMakeFiles/main.dir/src/cpp/MainMenu.cpp.o CMakeFiles/main.dir/src/cpp/PauseMenu.cpp.o CMakeFiles/main.dir/src/cpp/Player.cpp.o CMakeFiles/main.dir/src/cpp/Scene.cpp.o CMakeFiles/main.dir/src/cpp/SceneManager.cpp.o CMakeFiles/main.dir/src/cpp/Text.cpp.o CMakeFiles/main.dir/src/cpp/UI.cpp.o CMakeFiles/main.dir/src/cpp/main.cpp.o CMakeFiles/main.dir/src/cpp/timercpp.cpp.o | /usr/lib64/libSDL2main.a /usr/lib64/libSDL2-2.0.so.0.3000.3 /usr/lib64/libSDL2_image.so /usr/lib64/libSDL2_ttf.so
   FLAGS = -g
   LINK_LIBRARIES = /usr/lib64/libSDL2main.a  /usr/lib64/libSDL2-2.0.so.0.3000.3  /usr/lib64/libSDL2_image.so  /usr/lib64/libSDL2_ttf.so
   OBJECT_DIR = CMakeFiles/main.dir

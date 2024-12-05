@@ -8,7 +8,7 @@ Game::Game(){
     this->height = 580;
 
     //Initialize SDL
-    if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
+    if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_TIMER ) < 0 )
     {
         std::cout << "Could not initialize:" << SDL_GetError() << std::endl;
         std::exit(1);

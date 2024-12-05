@@ -38,12 +38,17 @@ void GameScene::ExitScene()
 
 void GameScene::UpdateGame()
 {
-        static Uint32 lastSpawnTime = 0;
+        static Uint32 lastSpawnTimeGhost = 0, bigGhostTime = 0;
         Uint32 currentTime = SDL_GetTicks();
-
-        if(currentTime - lastSpawnTime >= 2000){
+        //spawns small ghosts
+        if(currentTime - lastSpawnTimeGhost >= 2000){
             enemies.emplace_back(std::make_unique<Ghost>(80, 80, "./../res/spaceship.png"));
-            lastSpawnTime = currentTime;
+            lastSpawnTimeGhost = currentTime;
+        }
+        //spawns big ghosts
+        if(currentTime - bigGhostTime >= 5000){
+            enemies.emplace_back(std::make_unique<BigGhost>(100, 100, "./../res/spaceship.png"));
+            bigGhostTime = currentTime;
         }
 
         doInput(event);
@@ -63,7 +68,6 @@ void GameScene::UpdateGame()
                 if(calculateDistance(bullet.getPosX(), bullet.getPosY(), enemy->getPosX(), enemy->getPosY()) <= 35){
                     enemy->takeDamage(1);
                     bullet.active = false;
-                    Game::get().score += 1;
                     charge += 10;
                 }
             }

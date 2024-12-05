@@ -7,8 +7,8 @@ protected:
     int xPos, yPos;
     int width, height;
     float angle = 0;
-    SDL_Texture* texture;
 public:
+    SDL_Texture* texture;
     Entity();
     Entity(int x, int y, int width, int height, const char* texFile);
     virtual void draw();

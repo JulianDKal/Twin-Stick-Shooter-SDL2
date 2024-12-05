@@ -20,6 +20,9 @@ public:
     void draw();
     void takeDamage(int amount){
         health -= amount;
-        if(health <= 0) this->active = false;
+        if(health <= 0) {
+            this->active = false;
+            Game::get().score += 1;
+        }
     }
 };
