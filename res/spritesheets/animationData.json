@@ -1,0 +1,8 @@
+{
+    "big_ghost_spritesheet":
+        { 
+            "frames":4,
+            "frameWidth": 370,
+            "frameHeight": 370
+        }
+}

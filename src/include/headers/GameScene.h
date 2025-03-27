@@ -10,11 +10,13 @@
 #include <list>
 #include "EnemyTypes.h"
 #include <memory>
+#include "AnimationManager.h"
 
 class GameScene : public Scene
 {
 //using Scene::Scene;
 private:
+    AnimationManager animationManager;
     std::list<Bullet> bullets;
     std::list<std::unique_ptr<Enemy>> enemies;
     SDL_Event* event;

@@ -21,6 +21,10 @@ void GameScene::EnterScene()
     
     lastSpawnTimeGhost = SDL_GetTicks();
     bigGhostTime = SDL_GetTicks();
+
+    if(animationManager.animations.find("ghost") != animationManager.animations.end()){
+        SDL_Log("Ghost animation found!");
+    }
 }
 
 void GameScene::UpdateScene()
