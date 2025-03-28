@@ -21,10 +21,6 @@ void GameScene::EnterScene()
     
     lastSpawnTimeGhost = SDL_GetTicks();
     bigGhostTime = SDL_GetTicks();
-
-    if(animationManager.animations.find("ghost") != animationManager.animations.end()){
-        SDL_Log("Ghost animation found!");
-    }
 }
 
 void GameScene::UpdateScene()
@@ -53,7 +49,7 @@ void GameScene::UpdateGame()
         }
         //spawns big ghosts
         if(currentTime - bigGhostTime >= 5000){
-            enemies.emplace_back(std::make_unique<BigGhost>(150, 150, "./../res/pixel_ghost_1.png"));
+            enemies.emplace_back(std::make_unique<BigGhost>(150, 150, "./../res/pixel_ghost_1.png", &animationManager));
             bigGhostTime = currentTime;
         }
 

@@ -7,12 +7,11 @@
 
 class Animation{
 private:
-    int frameRate, currentFrame = 0, totalFrames;
+    int frameTime = 0, counter = 0, currentFrame = 0, totalFrames = 0;
 public:
     Animation();
     ~Animation();
     std::vector<SDL_Texture*> spriteSheets;
     SDL_Texture* getFrame();
-    void playNextFrame();
     void fillSpriteSheets(std::string filePath);
 };

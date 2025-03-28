@@ -21,6 +21,10 @@ void Entity::draw()
     //drawEntityRotated(texture, width, height, angle, xPos, yPos);
 }
 
+void Entity::enterAnimation()
+{
+}
+
 int Entity::getPosX()
 {
     return xPos;

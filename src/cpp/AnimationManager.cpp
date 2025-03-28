@@ -17,7 +17,6 @@ void AnimationManager::addAnimations(std::string spiritSheetPath)
 AnimationManager::AnimationManager(/* args */)
 {
     addAnimations("./../res/spritesheets/");
-    animations["ghost"] = std::make_shared<Animation>();
 }
 
 AnimationManager::~AnimationManager()

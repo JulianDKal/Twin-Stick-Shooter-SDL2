@@ -55,7 +55,12 @@ void Enemy::updatePosition(int playerPosX, int playerPosY)
 void Enemy::draw(int playerX, int playerY)
 {
     flipState = (playerX < xPos) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
-    
+    if(this->animation != nullptr) {
+        texture = this->animation->getFrame();
+        //SDL_Log("Animation is not null");
+        if(texture == nullptr) {
+            SDL_Log("Animation texture is null");
+        }
+    }
     drawEntityFl(texture, width, height, xPos, yPos, flipState);
-    //drawEntityRotated(texture, width, height, angle, xPos, yPos);
 }
