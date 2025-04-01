@@ -6,9 +6,9 @@
 #include "Game.h"
 
 class Animation{
-private:
-    int frameTime = 0, counter = 0, currentFrame = 0, totalFrames = 0;
 public:
+    bool looping = true;
+    int frameTime = 0, counter = 0, currentFrame = 0, totalFrames = 0;
     Animation();
     ~Animation();
     std::vector<SDL_Texture*> spriteSheets;

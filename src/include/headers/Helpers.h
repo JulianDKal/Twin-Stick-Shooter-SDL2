@@ -1,6 +1,9 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <unordered_map>
+#include <string>
+#include "Animation.h"
 #include "Game.h"
 #include <math.h>
 #include "Camera.h"

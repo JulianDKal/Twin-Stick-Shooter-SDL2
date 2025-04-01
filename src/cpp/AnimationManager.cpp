@@ -16,6 +16,8 @@ void AnimationManager::addAnimations(std::string spiritSheetPath)
 
 AnimationManager::AnimationManager(/* args */)
 {
+    JsonParser jsonParser;
+    jsonParser.parse("./../res/spritesheets/animationData.json");
     addAnimations("./../res/spritesheets/");
 }
 

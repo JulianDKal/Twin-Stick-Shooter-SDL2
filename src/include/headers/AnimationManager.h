@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include "Animation.h"
 #include <filesystem>
+#include "JsonParser.h"
 
 class AnimationManager
 {

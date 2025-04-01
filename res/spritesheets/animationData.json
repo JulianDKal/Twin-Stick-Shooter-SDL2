@@ -1,8 +1,16 @@
 {
     "big_ghost_idle":
         { 
-            "frames":4,
+            "totalFrames" : 4,
+            "frameTime": 10,
             "frameWidth": 370,
             "frameHeight": 370
+        },
+    "small_ghost_idle":
+        { 
+            "totalFrames" : 5,
+            "frameTime": 10,
+            "frameWidth": 900,
+            "frameHeight": 900
         }
 }
